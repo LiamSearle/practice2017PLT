@@ -1,0 +1,5 @@
+Abc() returns true;
+
+a = true;
+b = false;
+c = a and b;

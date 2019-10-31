@@ -18,6 +18,7 @@ CHARACTERS
 TOKENS
   number     = digit { digit } .
   variable   = letter .
+  Capitals   = Capitals .
 
 PRAGMAS // for compatibilty - ignored
   CodeOn     = "$C+" .
@@ -34,13 +35,11 @@ PRODUCTIONS
   BoolCalc                             (. int index = 0; bool value = false; 
                                           for (int i = 0; i < 26; i++)
                                           {
-                                              
                                               mem[i]=false;
-                                              Console.WriteLine(mem[i]);
                                           }
                                         .)
   = { 
-        FunctionName<out index> |
+        FunctionName<out value> SYNC ";" |
         (   Variable<out index>
           WEAK "="
           Expression<out value>        (. mem[index] = value; .)
@@ -82,17 +81,13 @@ PRODUCTIONS
     | Variable<out index>              (. value = mem[index]; .)
     | "(" Expression<out value> ")" .
 
-  FunctionName<out bool value>          
-  = Capitals {Capitals | letter} 
-    "(" Paramater ")" 
+  FunctionName<out bool value>        (. int index; .)  
+  = Capitals {Capitals | variable}    
+    "(" {Variable<out index>} ")" 
     "returns"
-    Expression<out value1>
+    Expression<out value>
     .
   
-  Paramater<out index>
-  = {Variable}
-  .
-
   Variable<out int index>
   = variable                    (. index = token.val[0] - 'a'; .) .
 
