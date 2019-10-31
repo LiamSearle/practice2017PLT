@@ -1,0 +1,43 @@
+$C+ // compounded functions
+//  eg19.log
+
+  NOR(x, y) returns not ( x or y );
+
+  read("supply a, b, c ", a, b, c);
+  write(a, b, c, NOR(a, NOR(b, c)) );
+
+//             DSP      0
+//             FHDR
+//             CALL     main             // call main
+//             HALT
+//      NOR    LDL      x                // NOR starts here
+//             LDL      y
+//             OR                        // x or y
+//             NOT                       // not (x or y)
+//             STL      0                // store in RV slot at base of stack frame
+//             RET                       // return from non-void function
+//             TRAP
+//      main   DSP      26               // main starts here
+//             PRNS     "supply a, b, c "
+//             LDA      a
+//             INPB                      // read(a)
+//             LDA      b
+//             INPB                      // read(b)
+//             LDA      c
+//             INPB                      // read(c)
+//             LDL      a
+//             PRNB                      // write(a)
+//             LDL      b
+//             PRNB                      // write(b)
+//             LDL      c
+//             PRNB                      // write(c)
+//             FHDR                      // frame header for "first" NOR
+//             LDL      a                // push parameter a
+//             FHDR                      // prepare frame header for "second" NOR
+//             LDL      b                // push parameter b
+//             LDL      c                // push parameter c
+//             CALL     NOR              // returns NOR(b, c)
+//             CALL     NOR              // returns NOR(a, NOR(b,c))
+//             PRNB                      // write(NOR(a, NOR(b, c))
+//             RETV                      // wasn't that cute?
+

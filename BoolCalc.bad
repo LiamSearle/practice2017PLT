@@ -1,0 +1,4 @@
+a = true;
+b = false;
+c = falset;
+write (a, b, a and b, a or b, b or c);

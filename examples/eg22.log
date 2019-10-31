@@ -1,0 +1,8 @@
+$C+ // three input and gate
+//  eg22.log
+
+  AND3(p, q, r)  returns p and q;
+
+  read("supply a, b and c ", a, b, c);
+  write(a, b, c, AND3(a, b, c, d));
+

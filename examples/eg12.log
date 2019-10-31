@@ -1,0 +1,20 @@
+$C+ // rather redundant, but legal function
+//  eg12.log
+
+  NOT(x) returns not x;
+
+// Of course the labels will be replaced by numeric addresses
+// and the parameter name x by the appropriate offset from FP.
+
+//             DSP      0
+//             FHDR
+//             CALL     main             // call main
+//             HALT
+//      NOT    LDL      x                // push value(x)
+//             NOT                       // not x
+//             STL      0                // // stores not x in RV slot at base of stack frame
+//             RET                       // return from non-void function
+//             TRAP
+//      main   DSP      26               // main starts here
+//             RETV                      // and simply returns
+

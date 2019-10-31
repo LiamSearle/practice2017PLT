@@ -1,0 +1,26 @@
+$C+ // truth tables
+//  eg29.log
+
+  XOR(x, y)  returns x and not y or y and not x;
+  NAND(x, y) returns not (x and y);
+
+  writeLine("   x      y     x xor y   not x or not y");
+  writeLine();
+
+  loop x
+    loop y {
+      writeLine(x, y, "  ", XOR(x, y), "     ", NAND(x, y));
+      writeLine();
+    }
+
+//     x      y     x xor y   not x or not y
+//
+//   false  false    false       true
+//
+//   false  true     true        true
+//
+//   true   false    true        true
+//
+//   true   true     false       false
+//
+

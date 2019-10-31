@@ -1,0 +1,9 @@
+$C+ // XOR and NAND again
+//  eg20.log
+
+  XOR(p, q)  returns p and not q or q and not p;
+  NAND(x, y) returns not ( x and y );
+
+  read("supply a and b ", a, b);
+  write(a, b, a and b, NAND(a, b), XOR(a, b), XOR(b, a) );
+

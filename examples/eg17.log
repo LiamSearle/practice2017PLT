@@ -1,0 +1,9 @@
+$C+ // NOR in two ways - are they equivalent? //  eg17.log
+//  eg17.log
+
+  NOR1(x, y) returns not ( x or y );
+  NOR2(x, y) returns not x and not y ;   // de Morgan
+
+  read("supply a and b ", a, b);
+  write(a, b, a or b, NOR1(a, b), NOR2(a, b) );
+

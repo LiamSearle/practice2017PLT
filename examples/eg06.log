@@ -1,0 +1,35 @@
+$C+ // simple expressions
+//  eg06.log
+
+  a = true;
+  b = false;
+  write(a, b, "a and b", a and b, "a or b", a or b);
+
+// Of course the labels will be replaced by numeric addresses
+// and the variable names a,b by the appropriate offsets from FP.
+
+//             DSP      0
+//             FHDR
+//             CALL     main
+//             HALT
+//      main   DSP      26               // a,b,c ... at offsets 4,5,6 ...
+//             LDC      1
+//             STL      a                // a = true
+//             LDC      0
+//             STL      b                // b = false
+//             LDL      a
+//             PRNB                      // write(a)
+//             LDL      b
+//             PRNB                      // write(b)
+//             PRNS     "a and  b"
+//             LDL      a
+//             LDL      b
+//             AND
+//             PRNB                      // write(a and b)
+//             PRNS     "a or b"
+//             LDL      a
+//             LDL      b
+//             OR
+//             PRNB                      // write(a or b)
+//             RETV
+

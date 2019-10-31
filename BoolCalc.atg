@@ -1,0 +1,99 @@
+using Library;
+
+COMPILER BoolCalc  $CN
+/* Simple Boolean expression calculator with 26 memory cells - Coco/R for C#
+   P.D. Terry, Rhodes University, 2017 */
+
+  static bool[] mem = new bool[26];
+  //static string[] functions = new string[];
+  //and(x,y) returns a and b;
+  
+
+CHARACTERS
+  digit      = "0123456789" .
+  letter     = "abcdefghijklmnopqrstuvwxyz" .
+  Capitals   = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" .
+  lf         = CHR(10) .
+
+TOKENS
+  number     = digit { digit } .
+  variable   = letter .
+
+PRAGMAS // for compatibilty - ignored
+  CodeOn     = "$C+" .
+  CodeOff    = "$C-" .
+  DebugOn    = "$D+" .
+  DebugOff   = "$D-" .
+
+COMMENTS FROM "//" TO lf
+COMMENTS FROM "/*" TO "*/"
+
+IGNORE CHR(0) .. CHR(31)
+
+PRODUCTIONS
+  BoolCalc                             (. int index = 0; bool value = false; 
+                                          for (int i = 0; i < 26; i++)
+                                          {
+                                              
+                                              mem[i]=false;
+                                              Console.WriteLine(mem[i]);
+                                          }
+                                        .)
+  = { 
+        FunctionName<out index> |
+        (   Variable<out index>
+          WEAK "="
+          Expression<out value>        (. mem[index] = value; .)
+        | "write" "("
+          Expression<out value>        (. IO.WriteLine(value); .)
+          { ","
+            Expression<out value>      (. IO.WriteLine(value); .)
+          } ")"
+        | "read" "("
+            Variable<out index>        (. mem[index] = IO.ReadBool(); .)
+          ")"
+       ) SYNC ";"
+    } EOF .
+
+  Expression<out bool value>           (. bool value1; .)
+  = AndExp<out value>
+    { "or" AndExp<out value1>          (. value = value || value1; .)
+    } .
+
+  AndExp<out bool value>               (. bool value1; .)
+  = EqlExp<out value>
+    { "and" EqlExp<out value1>         (. value = value && value1; .)
+    } .
+
+  EqlExp<out bool value>               (. bool value1; .)
+  = NotExp<out value>
+    {   "==" NotExp<out value1>        (. value = value == value1; .)
+      | "!=" NotExp<out value1>        (. value = value != value1; .)
+    } .
+
+  NotExp<out bool value>               (. value = false; .)
+  =   Factor<out value>
+    | "not" NotExp<out value>          (. value = ! value; .) .
+
+  Factor<out bool value>               (. int index;
+                                          value = false;.)
+  =   "true"                           (. value = true; .)
+    | "false"                          (. value = false; .)
+    | Variable<out index>              (. value = mem[index]; .)
+    | "(" Expression<out value> ")" .
+
+  FunctionName<out bool value>          
+  = Capitals {Capitals | letter} 
+    "(" Paramater ")" 
+    "returns"
+    Expression<out value1>
+    .
+  
+  Paramater<out index>
+  = {Variable}
+  .
+
+  Variable<out int index>
+  = variable                    (. index = token.val[0] - 'a'; .) .
+
+END BoolCalc.

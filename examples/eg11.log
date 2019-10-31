@@ -1,0 +1,5 @@
+$C+ // multiple choice strategy?
+//  eg11.log
+
+  Guess() returns true or false;
+

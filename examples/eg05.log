@@ -1,0 +1,23 @@
+$C+ // minimal read/write
+//  eg05.log
+
+  read(a);                               // t or true   or    f or false
+  write(a, not a);
+
+// Of course the label will be replaced by a numeric address (6)
+// and the variable name a by the appropriate offset from FP (4).
+
+//             DSP      0
+//             FHDR
+//             CALL     main
+//             HALT
+//      main   DSP      26
+//             LDA      a                // push address(a)
+//             INPB                      // read(a)
+//             LDL      a                // push value(a)
+//             PRNB                      // write(a)
+//             LDL      a                // push value(a)
+//             NOT
+//             PRNB                      // write(not a)
+//             RETV
+

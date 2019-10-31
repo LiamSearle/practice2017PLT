@@ -1,0 +1,9 @@
+$C+ // minimal functions
+//  eg16.log
+
+  NAND1(x, y) returns not ( x and y );
+  NAND2(x, y) returns not x or not y ;   // de Morgan
+
+  read("supply a and b ", a, b);
+  write(a, b, a and b, NAND1(a, b), NAND2(a, b) );
+

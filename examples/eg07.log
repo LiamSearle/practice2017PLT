@@ -1,0 +1,9 @@
+$C+ // interesting expressions (1) - predict the output
+//  eg07.log
+
+  read("supply a, b and c ", a, b, c);   // t or true   or    f or false
+  f = a or b or c;
+  d = (a or b) or c;
+  e = a or (b or c);
+  write(d, e, f,   f == d, d == e, e == f,    c == d == e);
+

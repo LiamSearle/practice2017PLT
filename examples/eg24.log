@@ -1,0 +1,12 @@
+$C+ // how does this handle life?
+//  How many errors are reported?  All of them?
+//  eg24.log
+
+  AND(p, q) returns 0;
+  BUT(d, e) returns -45;
+  YES(no) returns - no - no;
+  GoneBlank returns ;
+
+  read("supply a, b and c ", a, b, c);
+  write(a, b, c, AND(a, b c), YES(a or not a));
+

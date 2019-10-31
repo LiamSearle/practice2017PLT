@@ -1,0 +1,15 @@
+$C+ // truth tables - double (nested) loop
+//  eg27.log
+
+  loop x
+    loop y
+      writeLine(x, y);
+
+//   false  false
+//   false  true
+//   true   false
+//   true   true
+//
+//
+//  74 operations.
+

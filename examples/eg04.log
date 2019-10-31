@@ -1,0 +1,19 @@
+$C+ // writing negated constants
+//  eg04.log
+
+  write(not true, not not false);
+
+//             DSP      0
+//             FHDR
+//             CALL     main
+//             HALT
+//      main   DSP      26
+//             LDC      1                // true
+//             NOT                       // not true
+//             PRNB
+//             LDC      0                // false
+//             NOT
+//             NOT                       // not not false
+//             PRNB
+//             RETV
+

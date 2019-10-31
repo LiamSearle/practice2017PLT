@@ -1,0 +1,16 @@
+$C+ // minimal function (no parameters)
+//  eg10.log
+
+  NOT() returns true;
+
+//             DSP      0
+//             FHDR
+//             CALL     main             // call main
+//             HALT
+//      NOT    LDC      1                // NOT starts here
+//             STL      0                // stores true in RV slot at base of stack frame
+//             RET                       // and returns from non-void function
+//             TRAP                      // safety feature (is this needed?)
+//      main   DSP      26               // main starts here
+//             RETV                      // and simply returns
+

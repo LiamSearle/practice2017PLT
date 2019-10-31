@@ -1,0 +1,4 @@
+a = true;
+b = false;
+c = false;
+write (XOR(a,b), XOR(b,c), XOR(c,b), XOR(b,a) );

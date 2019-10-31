@@ -1,0 +1,10 @@
+$C+ // clearly wrong syntax - what happens?  (you need more of these)
+//  How many errors are reported?  All of them?
+//  eg23.log
+
+  AND3{p, q, r}  returns p and q;
+  BUT[s,d] returns true;
+
+  read("supply a, b and c ", a, b, c);
+  write(a, b, c, AND3(a, b; c));
+

@@ -1,0 +1,6 @@
+$C+ // minimal use of a variable
+//  eg02.log
+
+  a = true;
+  write(a, not a);                       // true false.  Amazing?
+

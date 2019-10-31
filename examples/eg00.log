@@ -1,0 +1,14 @@
+$C+ // minimal empty program (completely empty source file
+//  eg00.log
+
+// You should be able to generate eg00.cod on the following lines
+// Of course the label main will be replaced by the numeric address 6
+
+//             DSP      0                // no global variables needed
+//             FHDR
+//             CALL     main             // call "main"
+//             HALT                      // and exits the program
+//      main   DSP      26               // main allocates space for 26 local variables a ... z
+//                                       // (their offsets are 4 ... 29)
+//             RETV                      // empty main simply returns from a void function
+

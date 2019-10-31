@@ -1,0 +1,10 @@
+$C+ // NOR in two ways - are they equivalent?
+//  eg32.log
+
+  NOR1(x, y) returns not ( x or y );
+  NOR2(x, y) returns not x and not y ;  // de Morgan
+
+  loop a
+    loop b
+      writeLine(a, b, a or b, NOR1(a, b), NOR2(a, b), NOR1(a, b) == NOR2(a, b) );
+

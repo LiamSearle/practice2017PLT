@@ -1,0 +1,16 @@
+$C+ // writing constants
+//  eg03.log
+
+  write(true, false);
+
+//             DSP      0
+//             FHDR
+//             CALL     main
+//             HALT
+//      main   DSP      26
+//             LDC      1                // push true
+//             PRNB                      // write(true)
+//             LDC      0                // push false
+//             PRNB                      // write(false)
+//             RETV
+

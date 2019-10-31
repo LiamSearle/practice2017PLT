@@ -1,0 +1,15 @@
+$C+ // traditional hello world
+//  eg01.log
+
+  write("Hello world");
+
+// You should be able to generate eg01.cod on the following lines
+
+//             DSP       0               // no global variables needed
+//             FHDR
+//             CALL      main            // call "main"
+//             HALT                      // and exits the program
+//      main   DSP      26               // main allocates space for 26 local variables a ... z
+//             PRNS     "Hello world"    // give a cheerful greeting
+//             RETV                      // and simply return
+

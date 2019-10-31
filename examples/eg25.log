@@ -1,0 +1,15 @@
+$C+ // complete functions
+//  eg25.log
+
+// Do you recall your logic lectures?
+// A supply of NAND gates allows you to build circuits for AND, OR, NOT
+// from NAND gates suitably wired together
+
+  NAND(p, q) returns not (p and q);
+
+  read("supply a and b ", a, b);
+  write(a, b,
+        a or b,  NAND( NAND(a, a), NAND(b, b) ),
+        not a,   NAND( a, a ),
+        a and b, NAND( NAND(a, b), NAND(a, b) ) );
+

@@ -1,0 +1,12 @@
+$C+ // truth tables for complete functions
+//  eg30.log
+
+  NAND(p, q) returns not (p and q);
+
+  loop a
+    loop b
+      writeLine(a, b,
+                "    a or b  : ", a or b,  NAND( NAND(a, a), NAND(b, b) ),
+                "    not a   : ", not a,   NAND( a, a ),
+                "    a and b : ", a and b, NAND( NAND(a, b), NAND(a, b) ) );
+

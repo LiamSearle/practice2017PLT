@@ -1,0 +1,45 @@
+$C+ // the dreaded NAND gate for beginners
+//  eg14.log
+
+  NAND(x, y) returns not ( x and y );
+
+  read("supply a and b ", a, b);         // t or true   or    f or false
+  write(a, b, a and b, NAND(a, b));
+
+// Of course the labels will be replaced by numeric addresses,
+// the parameter names x,y by appropriate offsets from FP
+// and the variable names a,b by appropriate offsets.
+
+
+//             DSP      0
+//             FHDR
+//             CALL     main             // call main
+//             HALT
+//      NAND   LDL      x                // NAND starts here
+//             LDL      y
+//             AND                       // x and y
+//             NOT                       // not (x and y)
+//             STL      0                // store in RV slot at base of stack frame
+//             RET                       // return from non-void function
+//             TRAP
+//      main   DSP      26               // main starts here
+//             PRNS     "supply a and b "
+//             LDA      a
+//             INPB                      // read(a)
+//             LDA      b
+//             INPB                      // read(b)
+//             LDL      a
+//             PRNB                      // write(a)
+//             LDL      b
+//             PRNB                      // write(b)
+//             LDL      a
+//             LDL      b
+//             AND
+//             PRNB                      // write(a and b)
+//             FHDR
+//             LDL      a                // push argument value(a)
+//             LDL      b                // push argument value(b)
+//             CALL     NAND             // call NAND(a, b)
+//             PRNB                      // write (NAND(a, b)
+//             RETV
+

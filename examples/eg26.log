@@ -1,0 +1,8 @@
+$C+ // truth tables - simplest case
+//  eg26.log
+
+  loop x
+    write(x);
+
+//  writes    false true      as x cycles through these two values
+

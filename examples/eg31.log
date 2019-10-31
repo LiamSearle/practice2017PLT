@@ -1,0 +1,10 @@
+$C+ // NAND in two ways - are they equivalent?
+//  eg31.log
+
+  NAND1(x, y) returns not ( x and y );
+  NAND2(x, y) returns not x or not y ;  // de Morgan
+
+  loop a
+    loop b
+      writeLine(a, b, a and b, NAND1(a, b), NAND2(a, b), NAND1(a, b) == NAND2(a, b) );
+

@@ -1,0 +1,5 @@
+$C+ // rather redundant, but legal function
+//  eg13.log
+
+  Ident(x) returns x;
+
